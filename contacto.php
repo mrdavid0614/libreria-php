@@ -61,39 +61,32 @@ if (isset($_POST['submit'])) {
           </nav>
     </header>
     <main class="d-flex flex-column justify-content-center align-items-center">
-        <div class="text-center">
-            <h1 class="display-4">Formulario de contacto</h1>
-        </div>
-        <br />
-        <div class="card w-75 d-flex">
-            <div class="card-header">
-                <h3 class="text-center">Detalles</h3>
-            </div>
-        
-            <div class="card-body">
-                <form method="POST">
-                    <div class="row">
-                        <div class="form-group col-md-6 mb-3">
-                            <label class="form-label" for="correo">Correo electrónico</label>
-                            <input type="email" class="form-control form-control-sm" name="correo" required />
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card p-4 shadow-lg" style="background-color: #f0f3f5;">
+                    <h2 class="text-center mb-4">Contáctanos</h2>
+                    <form action="#" method="post">
+                        <div class="mb-3">
+                        <label class="form-label" for="correo">Correo Electrónico</label>
+                        <input type="email" class="form-control" name="correo" required>
                         </div>
-                        <div class="form-group col-md-6 mb-3">
-                            <label class="form-label" for="nombre" >Nombre</label>
-                            <input type="text" class="form-control form-control-sm" name="nombre" required />
+                        <div class="mb-3">
+                        <label class="form-label" for="nombre">Nombre</label>
+                        <input type="text" class="form-control" name="nombre" required>
                         </div>
-                        <div class="form-group mb-3">
-                            <label class="form-label" for="asunto" >Asunto</label>
-                            <input type="text" class="form-control form-control-sm" name="asunto" required />
+                        <div class="mb-3">
+                        <label class="form-label" for="asunto">Asunto</label>
+                        <input type="text" class="form-control" name="asunto" required>
                         </div>
+                        <div class="mb-3">
+                        <label class="form-label" for="comentario">Comentario</label>
+                        <textarea class="form-control" name="comentario" rows="4" required></textarea>
+                        </div>
+                        <button class="btn btn-primary btn-lg btn-block" name="submit">Enviar</button>
+                    </form>
                     </div>
-                    <div class="row">
-                        <div class="form-group mb-3">
-                            <label class="form-label" for="comentario" >Comentario</label>
-                            <textarea class="form-control" name="comentario" required></textarea>
-                        </div>
-                    </div>
-                    <button name="submit" class="btn btn-success">Enviar</button>
-                </form>
+                </div>
             </div>
         </div>
     </main>
