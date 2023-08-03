@@ -29,5 +29,20 @@
             </div>
           </nav>
     </header>
+    <main class="d-flex flex-column justify-content-center align-items-center" style="height: 70vh;">
+        <div class="text-center">
+            <h1 class="display-4">Raymond Libreria</h1>
+            <p>Donde puedes encontrar todo tipo de información sobre libros, sus autores, etc.</p>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center gap-3">
+          <a class="btn btn-primary" style="font-size: 1.2rem;" href="./libros.php">Ver libros</a>
+          <a class="btn btn-info" style="font-size: 1.2rem;" href="./autores.php">Ver autores</a>
+        </div>
+    </main>
+
+    <footer class="p-3 bg-dark d-flex justify-content-end fixed-bottom">
+      <a class="btn btn-outline-light" style="font-size: 1.2rem;" href="./contacto.php">Contáctanos</a>
+    </footer>
 </body>
 </html>
