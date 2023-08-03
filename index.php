@@ -1,21 +1,3 @@
-<?php
-error_reporting(E_ALL & ~E_DEPRECATED);
-
-date_default_timezone_set('America/Santo_Domingo');
-setlocale(LC_ALL, 'es_ES');
-
-require("./db.php");
-
-try {
-    $sql = "SELECT titulo, tipo, id_pub, precio, total_ventas, fecha_pub, nombre as autor_nombre, apellido as autor_apellido FROM titulos inner join titulo_autor on titulos.id_titulo = titulo_autor.id_titulo inner join autores on titulo_autor.id_autor = autores.id_autor";
-    $stmt = $conn->query($sql);
-    $libros = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (\Throwable $th) {
-    $error = "No se pudo obtener los libros";
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,80 +10,24 @@ try {
 <body>
     <header class="mb-5">
         <nav class="navbar navbar-expand-lg navbar-light bg-light ps-5">
-            <a class="navbar-brand" href="#">Raymond Libreria</a>
+            <a class="navbar-brand" href="./index.php">Raymond Libreria</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Libros</a>
+                  <a class="nav-link" href="./libros.php">Libros</a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="./pages/autores/index.php">Autores</a>
+                  <a class="nav-link" href="./autores.php">Autores</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="./pages/contacto/index.php">Contacto</a>
+                  <a class="nav-link" href="./contacto.php">Contacto</a>
                 </li>
               </ul>
             </div>
           </nav>
     </header>
-    <main class="d-flex flex-column justify-content-center align-items-center">
-        <div class="text-center">
-            <h1 class="display-4">Listado de libros</h1>
-        </div>
-        <br />
-        <div class="card">
-            <div class="card-header">
-                <h3 class="text-center">Disponibles</h3>
-            </div>
-            <div class="card-body">
-              <?php if (isset($error)): ?>
-                <p><?php echo $error ?></p>
-              <?php else: ?>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Titulo</th>
-                            <th>Tipo</th>
-                            <th>ID publicacion</th>
-                            <th>Precio</th>
-                            <th>Total de ventas</th>
-                            <th>Fecha de publicación</th>
-                            <th>Autor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                      <?php foreach($libros as $libro): ?>
-                        <tr>
-                            <td><?php echo $libro['titulo'] ?></td>
-                            <td><?php echo $libro['tipo'] ?></td>
-                            <td><?php echo $libro['id_pub'] ?></td>
-                            <td><?php echo $libro['precio'] ?></td>
-                            <td><?php echo $libro['total_ventas'] ?></td>
-                            <td>
-                                <?php
-                                    $fechaOriginal = $libro['fecha_pub'];
-                                    $timestamp = strtotime($fechaOriginal);
-                                    $mesesEnEspañol = array(
-                                        'enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio',
-                                        'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'
-                                      );
-                                      
-                                    $fechaFormateada = strftime('%d de ' . $mesesEnEspañol[date('n', $timestamp) - 1] . ' de %Y', $timestamp);
-                                    
-                                    echo $fechaFormateada;
-                                ?>
-                            </td>
-                            <td><?php echo $libro['autor_nombre'] . " " . $libro['autor_apellido'] ?></td>
-                        </tr>
-                      <?php endforeach;?>
-                    </tbody>
-                </table>
-              <?php endif; ?>
-            </div>
-        </div>
-    </main>
 </body>
 </html>

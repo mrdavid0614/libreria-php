@@ -1,12 +1,12 @@
 <?php
-    $host = "containers-us-west-128.railway.app";
+    $host = "containers-us-west-101.railway.app";
     $username = "root";
-    $password = "MfAgNNKdgle56W4cHlAB";
+    $password = "06fifRdhcQ8Yw0wDbrAs";
     $dbName = "libreria";
-    $port = 7423;
+    $port = 6949;
 
     try {
-        $conn = new PDO("mysql:host=$host;port=$port;dbname=$dbName", $username, $password);
+        $conn = new PDO("mysql:host=$host;port=$port;dbname=$dbName;charset=UTF8;", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     } catch (PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
